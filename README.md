@@ -1,1 +1,3 @@
 # google-maps
+
+`getRegion`
