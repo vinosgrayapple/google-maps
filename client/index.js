@@ -3,19 +3,20 @@ const googleMapsClient = require('@google/maps').createClient({
 	language: 'ru',
 	Promise: Promise
 });
+const readline = require('readline');
 let array = require('./array');
 let region = [];
-process.stdout.write('loading')
 main()
 
-function gReg(element) {
+function gReg(element, indx) {
 	return googleMapsClient.geocode({
 			address: element.replace(/(\.|\,)/g, ' ')
 		})
 		.asPromise()
 		.then(response => {
 
-			process.stdout.write('.')
+			// process.stdout.write('.')
+			writeWaitingPercent(indx)
 			return {
 				old: element,
 				new: getRegion(response.json.results[0].formatted_address)
@@ -28,7 +29,7 @@ function gReg(element) {
 async function main() {
 	for (let i = 0; i < array.length; i++) {
 		const element = array[i];
-		const forel = await gReg(element);
+		const forel = await gReg(element, i);
 		region.push(forel)
 	}
 	printData()
@@ -46,4 +47,9 @@ function getRegion(address) {
 		.toString()
 		.replace(/область/, 'обл.')
 
+}
+
+function writeWaitingPercent(p) {
+	readline.cursorTo(process.stdout, 0);
+	process.stdout.write(`Загрузка ... ${p} записи ... `);
 }

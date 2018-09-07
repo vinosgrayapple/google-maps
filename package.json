@@ -1,16 +1,28 @@
 {
   "name": "google-maps",
   "version": "1.0.0",
-  "description": "",
+  "description": "`getRegion`",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Serhii Komarychev <komarichev@gmail.com> (https://github.com/vinosgrayapple)",
   "license": "ISC",
   "dependencies": {
     "@google/maps": "^0.5.5",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "mongodb": "^3.1.4",
     "node-fetch": "^2.2.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vinosgrayapple/google-maps.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vinosgrayapple/google-maps/issues"
+  },
+  "homepage": "https://github.com/vinosgrayapple/google-maps#readme"
 }
