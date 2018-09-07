@@ -5,6 +5,10 @@ const cors = require('cors')
 const morgan = require('morgan')
 const favicon = require('serve-favicon')
 const path = require('path')
+const {
+  sequelize
+} = require('./models')
+const config = require('./config/config')
 
 const db = require('./config/db')
 const app = express()
@@ -13,7 +17,6 @@ app.get('/', (req, res) => {
   res.send('Hello')
 })
 
-const port = 8880
 app.use(express.static('public'))
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 // app.use(bodyParser.urlencoded({
@@ -30,7 +33,10 @@ MongoClient.connect(db.url, {
   db = db.db('notable')
   require('./app/routes')(app, db)
 
-  app.listen(port, () => {
-    console.log(`Listen on http://localhost:${port}`)
-  })
+  sequelize.sync()
+    .then(() => {
+      app.listen(port, () => {
+        console.log(`Listen on http://localhost:${config.port}`)
+      })
+    })
 })
