@@ -16,9 +16,10 @@ app.get('/', (req, res) => {
 const port = 8880
 app.use(express.static('public'))
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
-app.use(bodyParser.urlencoded({
-  extended: true
-}))
+// app.use(bodyParser.urlencoded({
+//     extended: true
+// }))
+app.use(bodyParser.json())
 app.use(cors())
 app.use(morgan('combined'))
 

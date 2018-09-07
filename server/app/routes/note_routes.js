@@ -1,8 +1,8 @@
 const ObjectID = require('mongodb').ObjectID
 module.exports = function (app, db) {
-  app.get('/status', (req, res) => {
+  app.post('/register', (req, res) => {
     res.send({
-      message: 'helloWorld'
+      message: ` Hello ${req.body.email} you was registered`
     })
   })
   /* GET from db */
