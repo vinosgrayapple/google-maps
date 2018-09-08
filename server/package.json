@@ -19,6 +19,7 @@
     "eslint-plugin-standard": "^4.0.0"
   },
   "dependencies": {
-    "sequelize": "^4.38.0"
+    "sequelize": "^4.38.0",
+    "sqlite3": "^4.0.2"
   }
 }

@@ -35,7 +35,7 @@ MongoClient.connect(db.url, {
 
   sequelize.sync()
     .then(() => {
-      app.listen(port, () => {
+      app.listen(config.port, () => {
         console.log(`Listen on http://localhost:${config.port}`)
       })
     })
